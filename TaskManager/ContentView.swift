@@ -8,11 +8,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            VStack {
+                
+                
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    
+                    NavigationLink{
+                        AddTaskView()
+                    }label:{
+                        Text("目標一覧")
+                    }
+                }
+            }
         }
         .padding()
     }
