@@ -8,7 +8,7 @@ class Task {
     var taskDescription: String
     var taskKind: String
     var taskAchieved: Bool
-
+    
     init(
         taskName: String,
         taskDate: Date,
@@ -23,7 +23,6 @@ class Task {
         self.taskAchieved = taskAchieved
     }
 }
-
 @Model
 final class SubProjectTask {
     var subTaskname: String
@@ -32,7 +31,7 @@ final class SubProjectTask {
     var subTaskKind: String
     var subTaskAchieved: Bool
     var project: Project?
-
+    
     init(
         subTaskname: String,
         subTaskDate: Date,
@@ -47,34 +46,33 @@ final class SubProjectTask {
         self.subTaskKind = subTaskKind
         self.subTaskAchieved = subTaskAchieved
     }
+}
 
-    @Model
-    final class Project {
-        var projectname: String
-        var projectDate: Date
-        var projectDescription: String
-        var projectKind: String
-        var projectAchieved: Bool
-
-        @Relationship(deleteRule: .cascade, inverse: \SubProjectTask.project)
-        var subTask: [SubProjectTask] = []
-
-        init(
-            projectname: String,
-            projectDate: Date,
-            projectDescription: String,
-            projectKind: String,
-            projectAchieved: Bool,
-            subTask: [SubProjectTask]
-        ) {
-
-            self.projectname = projectname
-            self.projectDate = projectDate
-            self.projectDescription = projectDescription
-            self.projectKind = projectKind
-            self.projectAchieved = projectAchieved
-            self.subTask = subTask
-        }
+@Model
+final class Project {
+    var projectname: String
+    var projectDate: Date
+    var projectDescription: String
+    var projectKind: String
+    var projectAchieved: Bool
+    
+    @Relationship(deleteRule: .cascade, inverse: \SubProjectTask.project)
+    var subTask: [SubProjectTask] = []
+    
+    init(
+        projectname: String,
+        projectDate: Date,
+        projectDescription: String,
+        projectKind: String,
+        projectAchieved: Bool,
+        subTask: [SubProjectTask]
+    ) {
+        
+        self.projectname = projectname
+        self.projectDate = projectDate
+        self.projectDescription = projectDescription
+        self.projectKind = projectKind
+        self.projectAchieved = projectAchieved
+        self.subTask = subTask
     }
-
 }

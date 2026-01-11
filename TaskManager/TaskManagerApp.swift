@@ -12,6 +12,7 @@ struct TaskManagerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(for: [Task.self, Project.self, SubProjectTask.self])
         }
     }
 }

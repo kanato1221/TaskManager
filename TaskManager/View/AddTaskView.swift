@@ -6,13 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddTaskView: View {
+    
+    @Query var projects: [Project]
     var body: some View {
         VStack {
-            Text("a")
-            
+            if projects.isEmpty {
+                Text("プロジェクトがありません")
+            }else{
+                
+                ForEach(projects, id: \.self){ project in
+                    Text(project.projectname)
+                }
+                
+            }
         }
+        
         .toolbar{
             ToolbarItem(placement: .primaryAction){
                 NavigationLink{
