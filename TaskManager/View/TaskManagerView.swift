@@ -79,6 +79,9 @@ struct TaskManagerView: View {
             
         }
         .navigationTitle("目標の追加")
+        Button("test"){
+            print(subTasks)
+        }
     }
     
     
