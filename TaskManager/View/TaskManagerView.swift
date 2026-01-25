@@ -95,15 +95,18 @@ struct TaskManagerView: View {
             projectAchieved: false,
             subTask: []
         )
-        let newSubProjectTask = SubProjectTask(
-            subTaskname: subTaskTitle,
-            subTaskDate: subTaskDate,
-            subTaskDescription: "",
-            subTaskKind: "",
-            subTaskAchieved: false
-        )
-
-        newProject.subTask.append(newSubProjectTask)
+        
+        for item in subTasks{
+            let newSubProjectTask = SubProjectTask(
+                subTaskname: item.title,
+                subTaskDate: item.date,
+                subTaskDescription: "",
+                subTaskKind: "",
+                subTaskAchieved: false
+            )
+            newProject.subTask.append(newSubProjectTask)
+        }
+       
         modelContext.insert(newProject)
         dismiss()
     }

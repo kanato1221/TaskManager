@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		14D808482EEE7E7A00D8BB90 /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14D808482EEE7E7A00D8BB90 /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TaskManager.app; path = "/Users/Kanato.Matsui/Desktop/TaskManager/build/Debug-iphoneos/TaskManager.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,16 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				14D8084A2EEE7E7A00D8BB90 /* TaskManager */,
-				14D808492EEE7E7A00D8BB90 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		14D808492EEE7E7A00D8BB90 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				14D808482EEE7E7A00D8BB90 /* TaskManager.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +86,7 @@
 			mainGroup = 14D8083F2EEE7E7A00D8BB90;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 14D808492EEE7E7A00D8BB90 /* Products */;
+			productRefGroup = 14D8083F2EEE7E7A00D8BB90;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

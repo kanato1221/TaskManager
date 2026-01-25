@@ -8,23 +8,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack{
-            VStack {
-                
-                
-            }
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    
-                    NavigationLink{
-                        AddTaskView()
-                    }label:{
-                        Text("目標一覧")
-                    }
-                }
-            }
-        }
-        .padding()
+//        NavigationStack{
+//            VStack {
+//                
+//                
+//            }
+//            .toolbar {
+//                ToolbarItem(placement: .primaryAction) {
+//                    
+//                    NavigationLink{
+//                        AddTaskView()
+//                    }label:{
+//                        Text("目標一覧")
+//                    }
+//                }
+//            }
+//        }
+//        .padding()
+        
+        CalenderView()
     }
 }
 
