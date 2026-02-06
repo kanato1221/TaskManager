@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct TaskManagerApp: App {
+    let calendarViewModel = CalendarViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()

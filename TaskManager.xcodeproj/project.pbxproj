@@ -6,8 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		14CDC1932F25E8F000E531E0 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDC1922F25E8F000E531E0 /* CalendarCell.swift */; };
+		14CDC1952F25E9D700E531E0 /* DateExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDC1942F25E9D700E531E0 /* DateExtentions.swift */; };
+		14CDC1972F25EEFD00E531E0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDC1962F25EEFD00E531E0 /* CalendarView.swift */; };
+		14CDC19B2F25F54200E531E0 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDC19A2F25F54200E531E0 /* CalendarViewModel.swift */; };
+		14CDC19D2F35E4A800E531E0 /* CalendarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDC19C2F35E4A800E531E0 /* CalendarContentView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		14D808482EEE7E7A00D8BB90 /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TaskManager.app; path = "/Users/Kanato.Matsui/Desktop/TaskManager/build/Debug-iphoneos/TaskManager.app"; sourceTree = "<absolute>"; };
+		14CDC1662F25D98300E531E0 /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CDC1922F25E8F000E531E0 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		14CDC1942F25E9D700E531E0 /* DateExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtentions.swift; sourceTree = "<group>"; };
+		14CDC1962F25EEFD00E531E0 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		14CDC19A2F25F54200E531E0 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		14CDC19C2F35E4A800E531E0 /* CalendarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -29,10 +42,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14CDC1992F25F51600E531E0 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				14CDC1962F25EEFD00E531E0 /* CalendarView.swift */,
+				14CDC19A2F25F54200E531E0 /* CalendarViewModel.swift */,
+				14CDC19C2F35E4A800E531E0 /* CalendarContentView.swift */,
+				14CDC1922F25E8F000E531E0 /* CalendarCell.swift */,
+				14CDC1942F25E9D700E531E0 /* DateExtentions.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		14D8083F2EEE7E7A00D8BB90 = {
 			isa = PBXGroup;
 			children = (
 				14D8084A2EEE7E7A00D8BB90 /* TaskManager */,
+				14CDC1662F25D98300E531E0 /* TaskManager.app */,
+				14CDC1992F25F51600E531E0 /* Calendar */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +85,7 @@
 			packageProductDependencies = (
 			);
 			productName = TaskManager;
-			productReference = 14D808482EEE7E7A00D8BB90 /* TaskManager.app */;
+			productReference = 14CDC1662F25D98300E531E0 /* TaskManager.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,6 +137,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14CDC1972F25EEFD00E531E0 /* CalendarView.swift in Sources */,
+				14CDC19D2F35E4A800E531E0 /* CalendarContentView.swift in Sources */,
+				14CDC1952F25E9D700E531E0 /* DateExtentions.swift in Sources */,
+				14CDC19B2F25F54200E531E0 /* CalendarViewModel.swift in Sources */,
+				14CDC1932F25E8F000E531E0 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
