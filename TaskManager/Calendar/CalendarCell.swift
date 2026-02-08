@@ -4,12 +4,14 @@ struct CalendarCell: View {
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
     let currentDate: Date
     
+    let cellColor: Color
+    
     let action: () -> ()
 
     
     var body: some View {
         RoundedRectangle(cornerRadius: 9)
-            .foregroundStyle(.regularMaterial)
+            .foregroundStyle(cellColor)
             .contentShape(Rectangle())
             .overlay(content: {
                 VStack {
@@ -23,13 +25,14 @@ struct CalendarCell: View {
             })
             .onTapGesture {
                 action()
+                
             }
     }
 }
 
 #Preview {
     let today = Date()
-    CalendarCell(currentDate: today) {
+    CalendarCell(currentDate: today, cellColor: .red) {
         print("Clicked")
     }
 }

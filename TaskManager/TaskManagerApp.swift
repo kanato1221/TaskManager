@@ -8,12 +8,14 @@
 import SwiftUI
 
 @main
-struct TaskManagerApp: App {
-    let calendarViewModel = CalendarViewModel()
+struct YourProjectNameApp: App {
+    @StateObject private var calendarViewModel = CalendarViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .modelContainer(for: [Task.self, Project.self, SubProjectTask.self])
+            CalendarView()
+                .environmentObject(calendarViewModel)
+                .modelContainer(for: [Task.self, SubProjectTask.self, Project.self])
         }
     }
 }
