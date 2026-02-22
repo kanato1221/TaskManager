@@ -1,10 +1,3 @@
-//
-//  WeekdayHeader.swift
-//  TaskManager
-//
-//  Created by 松井奏人 on 2026/02/08.
-//
-
 import SwiftUI
 
 struct WeekdayHeader: View {

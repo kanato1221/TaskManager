@@ -5,6 +5,7 @@ struct SubTask: Identifiable {
     let id = UUID()
     var title: String
     var date: Date
+    var isRoutine: Bool = false
 }
 
 struct TaskManagerView: View {
@@ -15,6 +16,7 @@ struct TaskManagerView: View {
     @State private var subTaskTitle: String = ""
     @State private var subTasks: [SubTask] = []
     @State private var subTaskDate: Date = Date()
+    @State private var isRoutine: Bool = false
 
     var body: some View {
 
@@ -40,26 +42,36 @@ struct TaskManagerView: View {
                             selection: $subTaskDate,
                             displayedComponents: .date
                         )
-                        Button(action: {
+                        Button{
 
                             if !subTaskTitle.isEmpty {
                                 let newTask = SubTask(
                                     title: subTaskTitle,
-                                    date: subTaskDate
+                                    date: subTaskDate,
+                                    isRoutine: isRoutine
                                 )
                                 subTasks.append(newTask)
                                 subTaskTitle = ""
 
                             }
-                        }) {
+                        }label: {
 
                             Image(systemName: "plus")
                         }
                     }
+                    
+                    Toggle("毎日繰り返す", isOn: $isRoutine)
+                        .font(.caption)
+                        .padding(5)
 
                     ForEach(subTasks) { task in
                         HStack {
                             Text(task.title)
+                            if task.isRoutine {
+                                Image(systemName: "repeat") // ルーティンマーク
+                                                    .font(.caption)
+                                                    .foregroundColor(.blue)
+                            }
                             Spacer()
                             Text(task.date, style: .date)
                                 .font(.caption)
