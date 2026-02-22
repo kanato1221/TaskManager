@@ -33,7 +33,7 @@ struct AddTaskView: View {
                     }
                 }
                 .scrollContentBackground(.hidden)
-                .background(Color.white)
+                .background(Color.clear)
             }
         }
         .navigationTitle("目標一覧")
@@ -55,12 +55,15 @@ struct AddTaskView: View {
                 VStack(alignment: .leading) {
                     Text(project.projectname)
                         .font(.headline)
-                        .strikethrough(project.projectAchieved, color: .gray) // 完了なら横線
+                        .strikethrough(project.projectAchieved, color: .gray)
                         .foregroundColor(project.projectAchieved ? .gray : .primary)
                     
                     Text("期限: \(project.projectDate, style: .date)")
                         .font(.caption)
                         .foregroundColor(project.projectAchieved ? .gray : .secondary)
+
+                    //期限過ぎたら文字この色にしたい
+                    //.foregroundColor(project.projectAchieved ? Color(red: 1.0, green: 0.58, blue: 0.0, opacity: 1.0) : .secondary)
                 }
             }
             

@@ -10,10 +10,3 @@ struct CalendarContentView: View {
 
     }
 }
-
-//#Preview {
-//    let calendarViewModel = CalendarViewModel()
-//    
-//    ContentView()
-//        .environmentObject(calendarViewModel)
-//}

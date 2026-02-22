@@ -29,6 +29,7 @@ struct TaskDetailSheet: View {
                     ) {
                         ForEach(todaysTasks) { task in
                             HStack {
+
                                 Image(
                                     systemName: task.subTaskAchieved
                                         ? "checkmark.circle.fill" : "circle"
@@ -42,26 +43,43 @@ struct TaskDetailSheet: View {
                                     .strikethrough(task.subTaskAchieved)
 
                                 if !task.subTaskDescription.isEmpty {
-                                    Text(task.subTaskDescription)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
 
+                                    if task.subTaskDescription != "Routine" {
+
+                                        Text(task.subTaskDescription)
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+
+                                    } else {
+
+                                    }
+
+                                }
+                                if let projectName = task.project?.projectname {
+                                    
+                                    if task.subTaskDescription != "Routine" {
+                                        Text(projectName)
+                                            .font(.system(size: 10))
+                                            .padding(.horizontal, 6)
+                                            .padding(.vertical, 2)
+                                            .background(Color.blue.opacity(0.1))
+                                            .cornerRadius(4)
+                                    }
+                                    else {
+                                        Text("日課")
+                                            .font(.system(size: 10))
+                                            .padding(.horizontal, 6)
+                                            .padding(.vertical, 2)
+                                            .background(Color.blue.opacity(0.1))
+                                            .cornerRadius(4)
+                                    }
+                                }
                             }
+
                             .onTapGesture {
                                 task.subTaskAchieved.toggle()
                                 print(task.subTaskAchieved)
                             }
-
-                            if let projectName = task.project?.projectname {
-                                Text(projectName)
-                                    .font(.system(size: 10))
-                                    .padding(.horizontal, 6)
-                                    .padding(.vertical, 2)
-                                    .background(Color.blue.opacity(0.1))
-                                    .cornerRadius(4)
-                            }
-
                         }
                     }
                 }

@@ -9,7 +9,6 @@ struct RoutineAddView: View {
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Calendar.current.date(byAdding: .month, value: 1, to: Date()) ?? Date()
     
-    // 💡 無期限スイッチの状態
     @State private var isIndefinite: Bool = true
     
     var body: some View {
@@ -22,10 +21,9 @@ struct RoutineAddView: View {
                 Section("期間の設定") {
                     DatePicker("開始日", selection: $startDate, displayedComponents: .date)
                     
-                    // 💡 無期限スイッチ
+                
                     Toggle("無期限", isOn: $isIndefinite)
                     
-                    // 💡 無期限じゃない時だけ終了日を表示
                     if !isIndefinite {
                         DatePicker("終了日", selection: $endDate, displayedComponents: .date)
                     }
@@ -46,7 +44,6 @@ struct RoutineAddView: View {
     func saveRoutine() {
         let calendar = Calendar.current
         
-        // 💡 無期限なら「今日から1年後」を終了日に設定する
         let finalEndDate: Date
         if isIndefinite {
             finalEndDate = calendar.date(byAdding: .year, value: 1, to: startDate) ?? endDate
@@ -65,7 +62,6 @@ struct RoutineAddView: View {
 
         var currentDate = startDate
         
-        // 終了日までループして生成
         while currentDate <= finalEndDate {
             let task = SubProjectTask(
                 subTaskname: routineName,

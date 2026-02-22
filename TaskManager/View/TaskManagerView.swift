@@ -42,7 +42,7 @@ struct TaskManagerView: View {
                             selection: $subTaskDate,
                             displayedComponents: .date
                         )
-                        Button{
+                        Button {
 
                             if !subTaskTitle.isEmpty {
                                 let newTask = SubTask(
@@ -54,23 +54,19 @@ struct TaskManagerView: View {
                                 subTaskTitle = ""
 
                             }
-                        }label: {
+                        } label: {
 
                             Image(systemName: "plus")
                         }
                     }
-                    
-                    Toggle("毎日繰り返す", isOn: $isRoutine)
-                        .font(.caption)
-                        .padding(5)
 
                     ForEach(subTasks) { task in
                         HStack {
                             Text(task.title)
                             if task.isRoutine {
-                                Image(systemName: "repeat") // ルーティンマーク
-                                                    .font(.caption)
-                                                    .foregroundColor(.blue)
+                                Image(systemName: "repeat")
+                                    .font(.caption)
+                                    .foregroundColor(.blue)
                             }
                             Spacer()
                             Text(task.date, style: .date)
@@ -91,7 +87,7 @@ struct TaskManagerView: View {
 
         }
         .navigationTitle("目標の追加")
-        
+
     }
 
     func save() {
@@ -105,8 +101,8 @@ struct TaskManagerView: View {
             projectAchieved: false,
             subTask: []
         )
-        
-        for item in subTasks{
+
+        for item in subTasks {
             let newSubProjectTask = SubProjectTask(
                 subTaskname: item.title,
                 subTaskDate: item.date,
@@ -116,7 +112,7 @@ struct TaskManagerView: View {
             )
             newProject.subTask.append(newSubProjectTask)
         }
-       
+
         modelContext.insert(newProject)
         dismiss()
     }
