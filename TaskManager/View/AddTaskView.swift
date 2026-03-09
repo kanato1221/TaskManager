@@ -4,9 +4,13 @@ import SwiftUI
 struct AddTaskView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Project.projectDate) var projects: [Project]
-    
+
+    let date = Date()
+
     var body: some View {
+
         VStack {
+
             if projects.isEmpty {
                 Text("プロジェクトがありません")
             } else {
@@ -17,18 +21,29 @@ struct AddTaskView: View {
                             ForEach(activeProjects) { project in
                                 projectRow(project: project)
                             }
-                            .onDelete { indexSet in deleteFromList(offsets: indexSet, filteredList: activeProjects) }
+                            .onDelete { indexSet in
+                                deleteFromList(
+                                    offsets: indexSet,
+                                    filteredList: activeProjects
+                                )
+                            }
                         }
                     }
 
-
-                    let completedProjects = projects.filter { $0.projectAchieved }
+                    let completedProjects = projects.filter {
+                        $0.projectAchieved
+                    }
                     if !completedProjects.isEmpty {
                         Section("完了済み") {
                             ForEach(completedProjects) { project in
                                 projectRow(project: project)
                             }
-                            .onDelete { indexSet in deleteFromList(offsets: indexSet, filteredList: completedProjects) }
+                            .onDelete { indexSet in
+                                deleteFromList(
+                                    offsets: indexSet,
+                                    filteredList: completedProjects
+                                )
+                            }
                         }
                     }
                 }
@@ -51,36 +66,84 @@ struct AddTaskView: View {
     @ViewBuilder
     private func projectRow(project: Project) -> some View {
         HStack {
-            NavigationLink(destination: ProjectDetailView(project: project)) {
-                VStack(alignment: .leading) {
-                    Text(project.projectname)
-                        .font(.headline)
-                        .strikethrough(project.projectAchieved, color: .gray)
-                        .foregroundColor(project.projectAchieved ? .gray : .primary)
-                    
-                    Text("期限: \(project.projectDate, style: .date)")
-                        .font(.caption)
-                        .foregroundColor(project.projectAchieved ? .gray : .secondary)
 
-                    //期限過ぎたら文字この色にしたい
-                    //.foregroundColor(project.projectAchieved ? Color(red: 1.0, green: 0.58, blue: 0.0, opacity: 1.0) : .secondary)
+            if project.projectDate < date {
+
+                NavigationLink(destination: ProjectDetailView(project: project))
+                {
+                    VStack(alignment: .leading) {
+                        Text(project.projectname)
+                            .font(.headline)
+                            .strikethrough(
+                                project.projectAchieved,
+                                color: .gray
+                            )
+                            .foregroundColor(
+                                project.projectAchieved ? .gray : .primary
+                            )
+
+                        Text("期限: \(project.projectDate, style: .date)")
+                            .font(.caption)
+
+                            .foregroundColor(
+                                project.projectAchieved
+                                    ? Color(
+                                        red: 1.0,
+                                        green: 0.58,
+                                        blue: 0.0,
+                                        opacity: 1.0
+                                    ) : .secondary
+                            )
+                    }
                 }
+
+            } else {
+                NavigationLink(destination: ProjectDetailView(project: project))
+                {
+                    VStack(alignment: .leading) {
+                        Text(project.projectname)
+                            .font(.headline)
+                            .strikethrough(
+                                project.projectAchieved,
+                                color: .gray
+                            )
+                            .foregroundColor(
+                                project.projectAchieved ? .gray : .primary
+                            )
+
+                        Text("期限: \(project.projectDate, style: .date)")
+                            .font(.caption)
+
+                            .foregroundColor(
+                                project.projectAchieved ? .gray : .secondary
+                            )
+
+                    }
+                }
+
             }
-            
+
             Spacer()
 
             Button {
+                print(project.projectDate < date)
                 withAnimation {
                     project.projectAchieved.toggle()
                 }
             } label: {
-                Image(systemName: project.projectAchieved ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(project.projectAchieved ? .green : .blue)
-                    .font(.title3)
+                Image(
+                    systemName: project.projectAchieved
+                        ? "checkmark.circle.fill" : "circle"
+                )
+                .foregroundColor(project.projectAchieved ? .green : .blue)
+                .font(.title3)
             }
-            .buttonStyle(.plain) 
+            .buttonStyle(.plain)
         }
-        .listRowBackground(project.projectAchieved ? Color.gray.opacity(0.1) : Color.gray.opacity(0.2))
+        .listRowBackground(
+            project.projectAchieved
+                ? Color.gray.opacity(0.1) : Color.gray.opacity(0.2)
+        )
     }
 
     func deleteFromList(offsets: IndexSet, filteredList: [Project]) {
@@ -89,4 +152,5 @@ struct AddTaskView: View {
             modelContext.delete(projectToDelete)
         }
     }
+
 }
